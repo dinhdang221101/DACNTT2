@@ -27,11 +27,11 @@ const OrderHistory = () => {
     fetchOrderHistory();
   }, [userId]);
 
-  const formatPrice = (price) => {
+  const formatPrice = (price: any) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
   };
 
-  const viewOrderDetails = (rowData) => {
+  const viewOrderDetails = (rowData: any) => {
     navigate(`/order-history/${rowData[0].orderID}`, {
       state: {
         products: rowData,
@@ -39,7 +39,7 @@ const OrderHistory = () => {
     });
   };
 
-  const actionBodyTemplate = (rowData) => {
+  const actionBodyTemplate = (rowData: any) => {
     return (
       <Button
         label="Chi tiết"
@@ -49,7 +49,7 @@ const OrderHistory = () => {
     );
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: any) => {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng bắt đầu từ 0
@@ -62,10 +62,10 @@ const OrderHistory = () => {
   };
 
   // Hàm để hiển thị thông tin sản phẩm trong đơn hàng
-  const productBodyTemplate = (rowData) => {
+  const productBodyTemplate = (rowData: any) => {
     return (
       <div>
-        {rowData.map((product) => (
+        {rowData.map((product: any) => (
           <div
             key={`${product.productName}_${rowData.orderID}`}
             style={{ display: "flex", alignItems: "center" }}
@@ -85,7 +85,7 @@ const OrderHistory = () => {
   };
 
   // Hàm để hiển thị trạng thái với thẻ tương ứng
-  const statusBodyTemplate = (rowData) => {
+  const statusBodyTemplate = (rowData: any) => {
     const statusMap = {
       pending: { label: "Đang chờ", severity: "warning" },
       processing: { label: "Đang xử lý", severity: "info" },
@@ -93,13 +93,13 @@ const OrderHistory = () => {
       cancelled: { label: "Đã hủy", severity: "danger" },
     };
 
-    const orderStatus = rowData[0].orderStatus;
+    const orderStatus: keyof typeof statusMap = rowData[0].orderStatus;
     const status = statusMap[orderStatus] || {
       label: "Không xác định",
       severity: "help",
     };
 
-    return <Tag value={status.label} severity={status.severity} />;
+    return <Tag value={status.label} severity={status.severity as "warning" | "info" | "success" | "danger" | "secondary" | "contrast" | undefined} />;
   };
 
   if (orders.length === 0) {

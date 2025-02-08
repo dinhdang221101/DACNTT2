@@ -22,7 +22,7 @@ const Layout = () => {
     });
   }, [UserID]);
 
-  const renderMenuItem = (item) => {
+  const renderMenuItem = (item: any) => {
     const isActive = location.pathname === item.url;
     return (
       <a
@@ -34,13 +34,13 @@ const Layout = () => {
     );
   };
 
-  const menuItems = categories.map((category) => ({
+  const menuItems = categories.map((category: any) => ({
     label: category.categoryName,
     url: `/category/${category.categoryID}`,
     template: renderMenuItem,
   }));
 
-  const handleUserOptions = (option) => {
+  const handleUserOptions = (option: any) => {
     switch (option) {
       case "history":
         navigate("/order-history");
@@ -114,7 +114,6 @@ const Layout = () => {
                   options={userMenuItems}
                   onChange={(e) => e.value.command()}
                   placeholder="👤"
-                  icon="pi pi-user"
                   className="p-button-info"
                 />
                 <Button

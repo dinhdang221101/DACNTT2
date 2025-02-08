@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios"; // Thêm axios nếu bạn muốn gửi yêu cầu đến server
 import "../../styles/Checkout.css";
 
 const Checkout = () => {
@@ -12,13 +10,13 @@ const Checkout = () => {
     return <div>Không thể xem lịch sử của đơn này.</div>;
   }
 
-  const formatPrice = (price) =>
+  const formatPrice = (price: any) =>
     price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
 
-  const totalPrice = (product) =>
+  const totalPrice = (product: any) =>
     product.price - product.price * (product.discountPercent / 100);
 
-  const calculateFinalAmount = (product) =>
+  const calculateFinalAmount = (product: any) =>
     totalPrice(product) * product.quantity;
 
   return (
@@ -30,7 +28,7 @@ const Checkout = () => {
       <h2>Chi tiết lịch sử đơn hàng</h2>
       <div className="product-summary">
         <h2>Thông tin sản phẩm</h2>
-        {products.map((product) => (
+        {products.map((product: any) => (
           <div key={product.productID} className="product-details">
             <img
               src={product.imageURL}

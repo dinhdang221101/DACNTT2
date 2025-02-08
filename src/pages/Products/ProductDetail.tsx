@@ -52,7 +52,7 @@ const ProductDetail = () => {
     return (total / reviews.length).toFixed(1);
   };
 
-  const averageRating = calculateAverageRating();
+  const averageRating = Number(calculateAverageRating());
   const totalReviews = reviews.length;
 
   const onBuyNow = () => {
@@ -87,7 +87,7 @@ const ProductDetail = () => {
 
     return (
       <div className="rating-stats">
-        {ratingCounts.map((count, index) => (
+        {ratingCounts.map((index) => (
           <div key={index} className="rating-row">
             <span>{5 - index} Sao</span>
             <div className="rating-bar">

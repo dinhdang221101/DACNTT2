@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios"; // Thêm axios nếu bạn muốn gửi yêu cầu đến server
 import "../../styles/Checkout.css";
@@ -18,24 +18,24 @@ const Checkout = () => {
     return <div>Không có sản phẩm nào để thanh toán.</div>;
   }
 
-  const formatPrice = (price) =>
+  const formatPrice = (price: any) =>
     price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
 
-  const totalPrice = (product) =>
+  const totalPrice = (product: any) =>
     product.price - product.price * (product.discountPercent / 100);
 
-  const calculateFinalAmount = (product) =>
+  const calculateFinalAmount = (product: any) =>
     totalPrice(product) * product.quantity;
 
   const calculateTotalAmount = () => {
-    return products.reduce((total, product) => {
+    return products.reduce((total: any, product: any) => {
       return total + calculateFinalAmount(product);
     }, 0);
   };
 
   const totalAmount = calculateTotalAmount();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -43,14 +43,14 @@ const Checkout = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
       const response = await axios.post("/User/Checkout", {
         ...formData,
         userID: localStorage.getItem("UserID"),
-        products: products.map((product) => ({
+        products: products.map((product: any) => ({
           ...product,
           price: totalPrice(product),
         })),
@@ -69,7 +69,7 @@ const Checkout = () => {
       <h1>Trang Thanh Toán</h1>
       <div className="product-summary">
         <h2>Thông tin sản phẩm</h2>
-        {products.map((product) => (
+        {products.map((product: any) => (
           <div key={product.productID} className="product-details">
             <img
               src={product.imageURL}

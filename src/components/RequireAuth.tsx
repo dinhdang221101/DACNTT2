@@ -2,7 +2,9 @@
 
 import { Navigate } from "react-router-dom";
 
-const RequireAuth = ({ children }) => {
+import { ReactNode } from "react";
+
+const RequireAuth = ({ children }: { children: ReactNode }) => {
   const isLoggedIn = !!localStorage.getItem("UserID");
 
   if (!isLoggedIn) {

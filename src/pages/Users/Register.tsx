@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
@@ -120,7 +120,7 @@ const Register = () => {
         <Checkbox
           inputId="agree"
           checked={agree}
-          onChange={(e) => setAgree(e.checked)}
+          onChange={(e: any) => setAgree(e.checked)}
         />
         <span>&nbsp;Tôi đồng ý với các điều khoản bảo mật cá nhân</span>
       </div>

@@ -7,10 +7,11 @@ import { Column } from "primereact/column";
 import "../../styles/Cart.css";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
-  const [selectedItems, setSelectedItems] = useState([]);
+  
+  const [cartItems, setCartItems] = useState<any[]>([]);
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [errorProducts, setErrorProducts] = useState([]);
+  const [errorProducts, setErrorProducts] = useState<{ productID: number; stock: number }[]>([]);
   const navigate = useNavigate();
 
   const userId = localStorage.getItem("UserID");
@@ -29,12 +30,12 @@ const Cart = () => {
     fetchCartItems();
   }, []);
 
-  const formatPrice = (price) => {
+  const formatPrice = (price: any) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
   };
 
-  const calculateTotalPrice = (items) => {
-    const total = items.reduce((sum, item) => {
+  const calculateTotalPrice = (items: any) => {
+    const total = items.reduce((sum: any, item: any) => {
       const discountedPrice =
         item.price - item.price * (item.discountPercent / 100);
       return sum + discountedPrice * item.quantity;
@@ -42,7 +43,7 @@ const Cart = () => {
     setTotalPrice(total);
   };
 
-  const handleRemoveFromCart = async (productId) => {
+  const handleRemoveFromCart = async (productId: any) => {
     const userId = localStorage.getItem("UserID");
     try {
       const response = await axios.post("/User/RemoveFromCart", {
@@ -51,7 +52,7 @@ const Cart = () => {
       });
       if (response.data.status === "00") {
         const updatedCartItems = cartItems.filter(
-          (item) => item.productID !== productId
+          (item: any) => item.productID !== productId
         );
         setCartItems(updatedCartItems);
         calculateTotalPrice(updatedCartItems);
@@ -68,7 +69,7 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    const selectedProducts = cartItems.filter((item) =>
+    const selectedProducts = cartItems.filter((item: any) =>
       selectedItems.includes(item.productID)
     );
     try {
@@ -91,7 +92,7 @@ const Cart = () => {
     }
   };
 
-  const actionBodyTemplate = (rowData) => {
+  const actionBodyTemplate = (rowData: any) => {
     return (
       <Button
         label="Xóa"
@@ -101,9 +102,9 @@ const Cart = () => {
     );
   };
 
-  const updateQuantity = async (productId, increment, event) => {
+  const updateQuantity = async (productId: any, increment: any, event: any) => {
     event.stopPropagation();
-    const newCartItems = cartItems.map((item) => {
+    const newCartItems = cartItems.map((item: any) => {
       if (item.productID === productId) {
         const newQuantity = increment ? item.quantity + 1 : item.quantity - 1;
         return {
@@ -120,8 +121,8 @@ const Cart = () => {
     );
   };
 
-  const onSelectionChange = (e) => {
-    setSelectedItems(e.value.map((item) => item.productID));
+  const onSelectionChange = (e: any) => {
+    setSelectedItems(e.value.map((item: any) => item.productID));
     calculateTotalPrice(e.value);
   };
 
@@ -212,14 +213,14 @@ const Cart = () => {
                 />
               </div>
               {errorProducts.find(
-                (item) => item.productID == rowData.productID
+                (item: any) => item.productID == rowData.productID
               ) && (
                 <span style={{ color: "red", fontSize: "14px" }}>
                   Số lượng hàng trong kho chỉ còn{" "}
                   {
                     errorProducts.find(
-                      (item) => item.productID == rowData.productID
-                    ).stock
+                      (item: any) => item.productID == rowData.productID
+                    )?.stock
                   }{" "}
                   sản phẩm
                 </span>

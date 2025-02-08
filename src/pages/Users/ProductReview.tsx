@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/ProductReview.css";
@@ -13,16 +13,16 @@ const ProductReview = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const UserID = localStorage.getItem("UserID");
 
-  const formatPrice = (price) =>
+  const formatPrice = (price: any) =>
     price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
 
-  const totalPrice = (product) =>
+  const totalPrice = (product: any) =>
     product.price - product.price * (product.discountPercent / 100);
 
-  const calculateFinalAmount = (product) =>
+  const calculateFinalAmount = (product: any) =>
     totalPrice(product) * product.quantity;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       const res = await axios.post("/User/SubmitReview", {
@@ -37,7 +37,7 @@ const ProductReview = () => {
         setTimeout(() => {
           const currentPath = window.location.pathname;
           product.rating = rating;
-          const newProducts = products.map((p) =>
+          const newProducts = products.map((p: any) =>
             p.productID == product.productID ? product : p
           );
           navigate(`${currentPath.replace(/\/product-review$/, "")}`, {
