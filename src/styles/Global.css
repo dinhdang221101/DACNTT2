@@ -1,0 +1,156 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ff9800;
+  color: white;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.header-buttons button {
+  margin-left: 10px;
+}
+
+.menu-bar {
+  margin: 10px 0;
+  border-radius: 8px;
+  background-color: #ffebc4;
+  border: 1px solid #ff9800;
+}
+
+.p-menubar {
+  justify-content: center;
+  font-size: 14px;
+}
+
+.p-menubar .p-menuitem-link {
+  color: #333;
+  text-transform: capitalize;
+}
+
+.p-menubar .p-menuitem-link:hover {
+  background-color: #ffe0b2;
+  color: #ff5722;
+}
+
+a {
+  color: #ff9800;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff5722;
+  text-decoration: underline;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-content div {
+  margin: 10px;
+}
+
+.footer-content h4 {
+  margin: 0 0 10px 0;
+}
+
+.footer-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-content hr {
+  margin: 20px 0;
+}
+
+.footer-content p {
+  margin: 5px 0;
+}
+
+.active-menu-item {
+  padding: 0px 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ff5722;
+}
+
+.inactive-menu-item {
+  font-size: 16px;
+  padding: 0px 8px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 10px;
+}
+
+.price {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.discount.hidden {
+  visibility: hidden;
+  height: auto;
+}
+
+.discount.visible {
+  visibility: visible;
+  height: auto;
+  transition: visibility 0.3s ease;
+}
+
+.brand-button {
+  color: #ff9800;
+}
+.social-icons {
+  justify-self: center;
+  display: flex;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #007bff; /* Màu cho biểu tượng */
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #0056b3; /* Màu khi hover */
+}

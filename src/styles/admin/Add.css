@@ -1,0 +1,74 @@
+.main-content {
+    .main-header {
+        ul {
+            display: flex;
+            gap: 12px;
+            padding: 0;
+            margin-bottom: 3rem;
+            li {
+                list-style: none;
+                font-size: 18px;
+                color: gray;
+            }
+            .active {
+                color: #ff9800;
+                text-decoration: underline;
+                text-underline-offset: 4px;
+                cursor: pointer;
+            }
+        }
+    }
+    
+    .form {
+        width: 100%;
+        margin: 0 auto;
+        padding: 30px;
+        border-radius: 8px;
+        background-color: #fafafa;
+
+        .p-field {
+            margin-bottom: 1rem;
+            
+            label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+            }
+    
+            input,
+            textarea {
+                width: 100%;
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+    
+            input:focus,
+            textarea:focus {
+                border-color: #ff9800;
+                outline: none;
+            }
+        }
+        .p-button {
+            display: block;
+            margin: 0 auto;
+            margin-top: 40px;
+            padding: 0.75rem;
+            font-size: 16px;
+            border-radius: 4px;
+            color: white;
+            background-color: #ff9800;
+        }
+
+        .p-link {
+            visibility: hidden;
+        }
+    }
+}
+
+
+
+
+
+
+

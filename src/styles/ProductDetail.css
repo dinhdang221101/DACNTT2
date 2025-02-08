@@ -1,0 +1,299 @@
+.product-detail {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.product-image {
+  max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-price {
+  font-size: 24px;
+  margin: 15px 0;
+  color: #ff5722;
+}
+
+.product-price .original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 10px;
+}
+
+.discounted-price {
+  font-weight: bold;
+  color: #ff5722;
+}
+
+.rating {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.average-rating {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.total-reviews {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #888;
+}
+
+.stars {
+  margin-left: 10px;
+}
+
+.stars .pi-star {
+  color: #ffcc00; /* Màu vàng cho sao đầy */
+}
+
+.stars .pi-star-o {
+  color: #ddd; /* Màu xám cho sao rỗng */
+}
+
+.stock-info {
+  margin: 15px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.quantity-selector {
+  margin: 15px 0;
+}
+
+.quantity-selector label {
+  margin-right: 10px;
+}
+
+.quantity-selector input {
+  width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.p-button-secondary,
+.p-button-warning {
+  background-color: #007ad9; /* Màu nền cho nút thêm vào giỏ hàng */
+  border: none;
+  color: #fff; /* Màu chữ */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.p-button-warning {
+  background-color: #ff5722; /* Màu nền cho nút mua ngay */
+}
+
+.p-button-secondary:disabled,
+.p-button-warning:disabled {
+  background-color: #ccc; /* Màu nền cho nút vô hiệu hóa */
+  cursor: not-allowed;
+}
+
+.product-description {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.product-description h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-description p {
+  color: #666;
+}
+
+.product-reviews {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.product-reviews h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.review {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.review-rating {
+  margin: 5px 0;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.rating-stats {
+  margin: 20px 0;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.rating-row span {
+  width: 50px;
+}
+
+.rating-bar {
+  flex: 1;
+  height: 8px;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin: 0 10px;
+  position: relative;
+}
+
+.rating-fill {
+  height: 100%;
+  background-color: #ff5722; /* Màu cam cho thanh đánh giá */
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.sort-options {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sort-options span {
+  margin-right: 10px;
+}
+
+.sort-options .p-button {
+  margin-right: 5px;
+}
+
+.sort-options .active {
+  background-color: #ff5722; /* Màu nền cho nút đang chọn */
+  color: #fff; /* Màu chữ cho nút đang chọn */
+}
+
+.sort-options .inactive {
+  color: #0f0f0f; /* Màu chữ cho nút đang chọn */
+}
+
+.back-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #007ad9; /* Màu cho chữ */
+}
+
+.back-button i {
+  margin-right: 5px; /* Khoảng cách giữa biểu tượng và chữ */
+}
+
+.back-button:hover {
+  text-decoration: underline; /* Hiệu ứng khi hover */
+}
+
+.toast {
+  position: fixed;
+  z-index: 1000;
+  top: 20px;
+  right: 20px;
+  padding: 15px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation:
+    fadeIn 0.5s,
+    fadeOut 0.5s 1.5s;
+}
+
+.error-toast {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.star-rating-product {
+  display: flex;
+  margin-left: 10px;
+}

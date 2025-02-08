@@ -1,0 +1,48 @@
+.cart {
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-image-cart {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.p-button-success {
+  border: none;
+  color: #fff; /* Màu chữ */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.p-button-danger {
+  background-color: #dc3545; /* Màu nền cho nút xóa */
+  border: none;
+  color: #fff; /* Màu chữ */
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.p-button-danger:hover {
+  background-color: #c82333; /* Màu nền khi hover */
+}
+
+.empty-cart {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
