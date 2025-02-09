@@ -49,7 +49,7 @@ const CategoryAdd = () => {
                     setSubmitted(false);
                     setTimeout(() => {
                         navigate('/admin/categories');
-                    }, 2000); // Chờ 1 giây trước khi điều hướng
+                    }, 2000);
                 });
         }
     };

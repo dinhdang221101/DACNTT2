@@ -6,7 +6,7 @@ import { Button } from "primereact/button";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Tag } from "primereact/tag";
-import "../../styles/OrderHistory.css"; // Đảm bảo tạo file CSS này
+import "../../styles/OrderHistory.css"; 
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
@@ -53,7 +53,7 @@ const OrderHistory = () => {
   const formatDate = (dateString: any) => {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Tháng bắt đầu từ 0
+    const month = String(date.getMonth() + 1).padStart(2, "0"); 
     const year = date.getFullYear();
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
@@ -62,7 +62,6 @@ const OrderHistory = () => {
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
   };
 
-  // Hàm để hiển thị thông tin sản phẩm trong đơn hàng
   const productBodyTemplate = (rowData: any) => {
     return (
       <div>
@@ -85,7 +84,6 @@ const OrderHistory = () => {
     );
   };
 
-  // Hàm để hiển thị trạng thái với thẻ tương ứng
   const statusBodyTemplate = (rowData: any) => {
     const statusMap = {
       pending: { label: "Đang chờ", severity: "warning" },

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/PaymentResult.css'; // Nhớ import CSS
+import '../../styles/PaymentResult.css';
 
 const Confirmation = () => {
     const navigate = useNavigate();
 
     const handleRedirect = () => {
-        navigate('/order-history'); // Chuyển hướng đến trang lịch sử mua hàng
+        navigate('/order-history');
     };
 
     return (

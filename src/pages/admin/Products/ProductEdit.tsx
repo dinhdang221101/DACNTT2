@@ -69,7 +69,7 @@ const ProductEdit = () => {
                     setSubmitted(false);
                     setTimeout(() => {
                         navigate('/admin/products');
-                    }, 2000); // Chờ 2 giây trước khi điều hướng
+                    }, 2000); 
                 });
         }
     };

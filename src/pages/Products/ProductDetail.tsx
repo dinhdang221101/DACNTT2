@@ -20,14 +20,12 @@ const ProductDetail = () => {
   const reviewsPerPage = 3;
 
   useEffect(() => {
-    // Lấy thông tin sản phẩm
     axios.get(`/Product/GetProductById/${id}`).then((res) => {
       if (res.data.data.length > 0) {
         setProduct(res.data.data[0]);
 
-        // Sau khi lấy sản phẩm thành công, lấy danh sách đánh giá
         axios.get(`/Product/GetReviewsByProductId/${id}`).then((reviewRes) => {
-          setReviews(reviewRes.data.data); // Giả sử dữ liệu đánh giá nằm trong reviewRes.data.data
+          setReviews(reviewRes.data.data); 
         });
       }
     });
@@ -83,7 +81,7 @@ const ProductDetail = () => {
   };
 
   const renderRatingStats = () => {
-    const ratingCounts = [0, 0, 0, 0, 0]; // Từ 1 sao đến 5 sao
+    const ratingCounts = [0, 0, 0, 0, 0]; 
     reviews.forEach((review) => ratingCounts[review.rating - 1]++);
 
     return (
@@ -123,7 +121,7 @@ const ProductDetail = () => {
   };
 
   const handleBackClick = () => {
-    navigate("/"); // Điều hướng về trang chủ
+    navigate("/"); 
   };
 
   const onAddToCart = async () => {

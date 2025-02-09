@@ -110,7 +110,7 @@ const Cart = () => {
         const newQuantity = increment ? item.quantity + 1 : item.quantity - 1;
         return {
           ...item,
-          quantity: Math.max(newQuantity, 1), // Đảm bảo số lượng không nhỏ hơn 1
+          quantity: Math.max(newQuantity, 1),
         };
       }
       return item;

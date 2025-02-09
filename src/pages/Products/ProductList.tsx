@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown"; // Import Dropdown component
+import { Dropdown } from "primereact/dropdown"; 
 import { useParams } from "react-router-dom";
 import { Paginator } from "primereact/paginator";
 import "../../styles/Home.css";
 import "../../styles/Product.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Thêm import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -16,9 +16,9 @@ const ProductList = () => {
   const [totalRecords, setTotalRecords] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedBrand, setSelectedBrand] = useState(null);
-  const [sortOrder, setSortOrder] = useState("asc"); // State for sorting
+  const [sortOrder, setSortOrder] = useState("asc");
   const { id } = useParams();
-  const navigate = useNavigate(); // Khởi tạo useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -27,7 +27,7 @@ const ProductList = () => {
           page: currentPage + 1,
           pageSize: rowsPerPage,
           brand: selectedBrand ? selectedBrand : null,
-          sortOrder: sortOrder, // Include sort order in API call
+          sortOrder: sortOrder, 
         },
       })
       .then((res) => {
@@ -36,7 +36,7 @@ const ProductList = () => {
           setTotalRecords(res.data.data[0].totalCount);
         }
       });
-  }, [id, currentPage, rowsPerPage, selectedBrand, sortOrder]); // Add sortOrder to dependencies
+  }, [id, currentPage, rowsPerPage, selectedBrand, sortOrder]); 
 
   useEffect(() => {
     axios.get(`Category/GetBrandByCategory/${id}`).then((res) => {
@@ -55,7 +55,7 @@ const ProductList = () => {
   };
 
   const handleProductClick = (productId: string) => {
-    navigate(`/product/${productId}`); // Điều hướng đến trang chi tiết sản phẩm
+    navigate(`/product/${productId}`); 
   };
 
   const renderProductCard = (product: any) => {
@@ -109,15 +109,14 @@ const ProductList = () => {
 
   const onBrandClick = (brand: any) => {
     setSelectedBrand(brand);
-    setCurrentPage(0); // Reset to first page when brand changes
+    setCurrentPage(0); 
   };
 
   const onSortChange = (e: any) => {
     setSortOrder(e.value);
-    setCurrentPage(0); // Reset to first page when sorting changes
+    setCurrentPage(0); 
   };
 
-  // Sorting options
   const sortOptions = [
     { label: "Giá từ thấp đến cao", value: "asc" },
     { label: "Giá từ cao đến thấp", value: "desc" },

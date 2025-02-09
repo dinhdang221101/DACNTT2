@@ -1,0 +1,36 @@
+.status-label {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+}
+
+.status-pending {
+    background-color: orange; /* Màu cho "Đang chờ" */
+}
+
+.status-processing {
+    background-color: blue; /* Màu cho "Đang xử lý" */
+}
+
+.status-completed {
+    background-color: green; /* Màu cho "Hoàn thành" */
+}
+
+.status-cancelled {
+    background-color: red; /* Màu cho "Đã hủy" */
+}
+.confirm-button {
+    white-space: nowrap;
+    background-color: #4CAF50; /* Màu nền xanh lá */
+    color: white; /* Màu chữ trắng */
+    border: none; /* Không có viền */
+    border-radius: 4px; /* Bo góc */
+    padding: 5px 10px; /* Khoảng cách bên trong */
+    cursor: pointer; /* Con trỏ chuột */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.confirm-button:hover {
+    background-color: #45a049; /* Màu khi hover */
+}

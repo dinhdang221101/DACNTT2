@@ -3,11 +3,11 @@ import  { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Checkbox } from "primereact/checkbox";
 import { Button } from "primereact/button";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import "../../styles/Register.css"; // Tạo file CSS riêng để tùy chỉnh
+import "../../styles/Register.css"; 
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -21,26 +21,22 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleRegister = async () => {
-    // Kiểm tra các trường có được điền hay không
     if (!name || !phone || !email || !password || !confirmPassword) {
       setError("Vui lòng điền tất cả các trường.");
       return;
     }
 
-    // Kiểm tra số điện thoại có hợp lệ không (VD: 10-11 chữ số)
     const phonePattern = /^(0[3|5|7|8|9])+([0-9]{8})$/;
     if (!phonePattern.test(phone)) {
       setError("Số điện thoại không hợp lệ.");
       return;
     }
 
-    // Kiểm tra mật khẩu
     if (password !== confirmPassword) {
       setError("Mật khẩu không khớp.");
       return;
     }
 
-    // Kiểm tra đồng ý với điều khoản
     if (!agree) {
       setError("Bạn phải đồng ý với các điều khoản bảo mật cá nhân.");
       return;

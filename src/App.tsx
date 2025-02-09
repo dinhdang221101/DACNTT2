@@ -20,6 +20,8 @@ import Layout from "./components/Layout";
 import ProductReview from "./pages/Users/ProductReview";
 import AdminLayout from "./components/admin/Layout";
 import AdminProductList from "./pages/admin/Products/ProductList";
+import AdminOrders from "./pages/admin/Orders/AdminOrders";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProductAdd from "./pages/admin/Products/ProductAdd";
 import ProductEdit from "./pages/admin/Products/ProductEdit";
 import CategoryList from "./pages/admin/Categories/CategoryList";
@@ -125,6 +127,9 @@ function App() {
               </RequireAuthAdmin>
             }
           >
+            <Route path="">
+              <Route index element={<AdminDashboard />} />
+            </Route>
             <Route path="products/">
               <Route index element={<AdminProductList />} />
               <Route path="add" element={<ProductAdd />} />
@@ -134,6 +139,9 @@ function App() {
               <Route index element={<CategoryList />} />
               <Route path="add" element={<CategoryAdd />} />
               <Route path="edit/:id" element={<CategoryEdit />} />
+            </Route>
+            <Route path="orders/">
+              <Route index element={<AdminOrders />} />
             </Route>
           </Route>
         </Routes>

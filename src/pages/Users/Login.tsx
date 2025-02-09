@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import axios from "axios"; // Import Axios
+import axios from "axios"; 
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import "../../styles/Login.css"; // Tạo file CSS riêng để tùy chỉnh
+import "../../styles/Login.css"; 
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie"; // Import thư viện js-cookie
+import Cookies from "js-cookie"; 
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +16,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    // Kiểm tra các trường có được điền hay không
     if (!email || !password) {
       setError("Vui lòng điền tất cả các trường.");
       return;

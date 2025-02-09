@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useHistory
+import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import '../../styles/PaymentResult.css'; // Nhớ import CSS
+import '../../styles/PaymentResult.css'; 
 
 const PaymentResult = () => {
     const [result, setResult] = useState(null);
     const query = new URLSearchParams(window.location.search);
-    const navigate = useNavigate(); // Khởi tạo useHistory
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const verifyPayment = async () => {
@@ -27,7 +27,7 @@ const PaymentResult = () => {
     }, []);
 
     const handleRedirect = () => {
-        navigate("/order-history"); // Chuyển hướng đến trang lịch sử mua hàng
+        navigate("/order-history"); 
     };
 
     return (

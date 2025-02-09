@@ -50,16 +50,19 @@ const Layout = () => {
     {
       label: "Đơn hàng",
       icon: "pi pi-fw pi-shopping-cart",
-      items: [],
+      items: [
+        {
+          label: "Tất cả đơn hàng",
+          icon: "pi pi-fw pi-list",
+          command: () => {
+            navigate("/admin/orders");
+          },
+        },
+      ],
     },
     {
       label: "Khách hàng",
       icon: "pi pi-fw pi-users",
-      items: [],
-    },
-    {
-      label: "Tin Tức",
-      icon: "pi pi-fw pi-megaphone",
       items: [],
     },
     {
@@ -93,7 +96,7 @@ const Layout = () => {
     <>
       <div className="container-fluid">
         <div className="topbar">
-          <h2>DHPhoneStore</h2>
+          <h2 style={{cursor: "pointer"}} onClick={() => navigate("/admin")}>DHPhoneStore</h2>
         </div>
         <div className="sidebar">
           <PanelMenu model={items} />
