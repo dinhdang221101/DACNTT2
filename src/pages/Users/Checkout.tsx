@@ -1,18 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import  { useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios"; // Thêm axios nếu bạn muốn gửi yêu cầu đến server
+import axios from "axios";
 import "../../styles/Checkout.css";
 
 const Checkout = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { products } = location.state || {};
-  const [formData, setFormData] = useState({
+  const { products }: any = location.state || {};
+  const [formData, setFormData] = useState<any>({
     name: "",
     email: "",
     address: "",
     phone: "",
+    paymentMethod: 3, 
   });
 
   if (!products || products.length === 0) {
@@ -38,7 +38,7 @@ const Checkout = () => {
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData((prevData: any) => ({
       ...prevData,
       [name]: value,
     }));
@@ -58,7 +58,16 @@ const Checkout = () => {
         totalAmount,
       });
       if (response.status === 200) {
-        navigate("/confirmation");
+        if (formData.paymentMethod == 2) { 
+          const vnpayResponse = await axios.post("/User/VNPay", {
+            totalAmount,
+            orderID: response.data.data, 
+          });
+
+          window.location.href = vnpayResponse.data.paymentUrl; 
+        } else {
+          navigate("/confirmation");
+        }
       }
     } catch (error) {
       console.error("Error during checkout:", error);
@@ -168,6 +177,39 @@ const Checkout = () => {
               required
             />
           </div>
+          
+          <div className="payment-methods">
+            <h3>Phương thức thanh toán</h3>
+            <div className="payment-option">
+              <input
+                type="radio"
+                id="cash"
+                name="paymentMethod"
+                value="3"
+                checked={formData.paymentMethod == 3}
+                onChange={handleChange}
+              />
+              <label htmlFor="cash">
+                <i className="pi pi-wallet" style={{ marginRight: "8px" }}></i>
+                Tiền mặt
+              </label>
+            </div>
+            <div className="payment-option">
+              <input
+                type="radio"
+                id="vnpay"
+                name="paymentMethod"
+                value="2"
+                checked={formData.paymentMethod == 2}
+                onChange={handleChange}
+              />
+              <label htmlFor="vnpay">
+                <i className="pi pi-credit-card" style={{ marginRight: "8px" }}></i>
+                VNPay
+              </label>
+            </div>
+          </div>
+
           <button type="submit" className="submit-button">
             Thanh toán
           </button>

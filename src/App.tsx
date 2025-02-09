@@ -9,6 +9,8 @@ import axios from "axios";
 import ProductList from "./pages/Products/ProductList";
 import ProductDetail from "./pages/Products/ProductDetail";
 import Checkout from "./pages/Users/Checkout";
+import PaymentResult from "./pages/Users/PaymentResult";
+import Confirmation from "./pages/Users/Confirmation";
 import Register from "./pages/Users/Register";
 import Login from "./pages/Users/Login";
 import Cart from "./pages/Users/Cart";
@@ -47,6 +49,26 @@ function App() {
                 element={
                   <RequireAuth>
                     <Checkout />
+                  </RequireAuth>
+                }
+              />
+            </Route>
+            <Route path="payment-result">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <PaymentResult />
+                  </RequireAuth>
+                }
+              />
+            </Route>
+            <Route path="confirmation">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <Confirmation />
                   </RequireAuth>
                 }
               />

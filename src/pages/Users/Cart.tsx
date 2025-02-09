@@ -45,13 +45,13 @@ const Cart = () => {
   };
 
   const handleRemoveFromCart = async (productId: any) => {
-    const userId = localStorage.getItem("UserID");
+    // const userId = localStorage.getItem("UserID");
     try {
-      const response = await axios.post("/User/RemoveFromCart", {
-        userID: userId,
-        productID: productId,
-      });
-      if (response.data.status === "00") {
+      // const response = await axios.post("/User/RemoveFromCart", {
+      //   userID: userId,
+      //   productID: productId,
+      // });
+      // if (response.data.status === "00") {
         const updatedCartItems = cartItems.filter(
           (item: any) => item.productID !== productId
         );
@@ -63,7 +63,7 @@ const Cart = () => {
             prevSelected.filter((id) => id !== productId)
           );
         }
-      }
+      // }
     } catch (error) {
       console.error("Error removing item from cart:", error);
     }

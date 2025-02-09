@@ -103,6 +103,22 @@ const OrderHistory = () => {
     return <Tag value={status.label} severity={status.severity as "warning" | "info" | "success" | "danger" | "secondary" | "contrast" | undefined} />;
   };
 
+  const statusPayTemplate = (rowData: any) => {
+    const statusMap = {
+      pending: { label: "Đang chờ", severity: "warning" },
+      completed: { label: "Đã thanh toán", severity: "success" },
+      failed: { label: "Thất bại", severity: "danger" },
+    };
+
+    const orderStatus: keyof typeof statusMap = rowData[0].paymentStatus;
+    const status = statusMap[orderStatus] || {
+      label: "Không xác định",
+      severity: "help",
+    };
+
+    return <Tag value={status.label} severity={status.severity as "warning" | "info" | "success" | "danger" | "secondary" | "contrast" | undefined} />;
+  };
+
   if (orders.length === 0) {
     return <div className="empty-orders">Bạn chưa có đơn hàng nào.</div>;
   }
@@ -129,7 +145,27 @@ const OrderHistory = () => {
         <Column
           field="status"
           header="Trạng thái"
-          body={statusBodyTemplate} // Sử dụng hàm hiển thị trạng thái
+          body={statusBodyTemplate} 
+        />
+        <Column
+          field="paymentStatus"
+          header="Thanh Toán"
+          body={statusPayTemplate} 
+        />
+        <Column
+          field="paymentDate"
+          header="Ngày thanh toán"
+          body={(rowData) => rowData[0].paymentDate ? formatDate(rowData[0].paymentDate): null}
+        />
+        <Column
+          field="paymentMethodID"
+          header="Phương thức"
+          style={{textAlign: "center"}}
+          body={(rowData) => rowData[0].paymentMethodID == 2 ? <label htmlFor="vnpay">
+            <i className="pi pi-credit-card" style={{ marginRight: "8px" }}></i>
+          </label> : <label htmlFor="cash">
+                <i className="pi pi-wallet" style={{ marginRight: "8px" }}></i>
+              </label>}
         />
         <Column header="Sản phẩm" body={productBodyTemplate} />
         <Column header="" body={actionBodyTemplate} />

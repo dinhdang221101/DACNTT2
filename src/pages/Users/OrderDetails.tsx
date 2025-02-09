@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../styles/Checkout.css";
 
 const Checkout = () => {
@@ -19,6 +20,25 @@ const Checkout = () => {
 
   const calculateFinalAmount = (product: any) =>
     totalPrice(product) * product.quantity;
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    try {
+        if (products[0].paymentMethodID == 2) { 
+          const vnpayResponse = await axios.post("/User/VNPay", {
+            totalAmount: products[0].totalAmount,
+            orderID: products[0].orderID, 
+          });
+
+          window.location.href = vnpayResponse.data.paymentUrl; 
+        } else {
+          navigate("/confirmation");
+        }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+    }
+  };
 
   return (
     <div className="checkout-container">
@@ -87,7 +107,7 @@ const Checkout = () => {
                       </span>
                     ))}
                   </div>
-                ) : (
+                ) : product.orderStatus == "completed" && (
                   <div
                     className="back-button"
                     style={{ width: "fit-content" }}
@@ -109,7 +129,7 @@ const Checkout = () => {
 
       <div className="payment-info">
         <h2>Thông tin thanh toán</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Họ và tên</label>
             <input
@@ -154,6 +174,9 @@ const Checkout = () => {
               required
             />
           </div>
+          {products[0].paymentMethodID == 2 && products[0].paymentStatus == "pending" && <button type="submit" className="submit-button">
+            Thanh toán
+          </button>}
         </form>
       </div>
 

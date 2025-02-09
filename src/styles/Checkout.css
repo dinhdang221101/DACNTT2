@@ -136,3 +136,16 @@ h1 {
   font-size: 20px !important;
   cursor: default !important;
 }
+.payment-methods {
+  margin: 20px 0;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.payment-option input {
+  margin-right: 10px;
+}
