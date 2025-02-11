@@ -11,7 +11,7 @@
 }
 
 .topbar {
-  position: fixed;
+  position: sticky;
   height: 4rem;
   left: 0;
   top: 0;
@@ -136,7 +136,7 @@
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
-  padding: 5rem 2rem 2rem 4rem;
+  padding: 2rem 2rem 2rem 4rem;
   margin-left: 300px;
 
   .main-footer {

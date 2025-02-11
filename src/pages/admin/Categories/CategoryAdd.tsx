@@ -50,7 +50,8 @@ const CategoryAdd = () => {
                     setTimeout(() => {
                         navigate('/admin/categories');
                     }, 2000);
-                });
+                }
+            );
         }
     };
 
@@ -96,4 +97,3 @@ const CategoryAdd = () => {
 }
 
 export default CategoryAdd;
-    ;

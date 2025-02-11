@@ -103,8 +103,11 @@ const ProductAdd = () => {
                         options={categories} 
                         onChange={(handleChange)} 
                         optionLabel="categoryName" 
-                        placeholder="Chọn" 
+                        placeholder="Chọn loại sản phẩm"
+                        className={submitted && !product.categoryID ? 'p-invalid' : ''} 
                     />
+                    {submitted && !product.categoryID && 
+                    <small className="p-error">Vui lòng chọn loại sản phẩm.</small>}
                 </div>
                 <div className="p-field">
                     <label htmlFor="brand">Thương hiệu:</label>
@@ -115,12 +118,15 @@ const ProductAdd = () => {
                 <div className="p-field">
                     <label htmlFor="price">Giá:</label>
                     <InputNumber id="price" name="price" onValueChange={handleChange} 
-                        className={submitted && product.price === 0 ? 'p-invalid' : ''}/>
-                    {submitted && product.price === 0 && <small className="p-error">Vui lòng nhập giá.</small>}
+                        className={submitted && !product.price ? 'p-invalid' : ''}/>
+                    {submitted && !product.price && <small className="p-error">Vui lòng nhập giá.</small>}
                 </div>
                 <div className="p-field">
-                    <label htmlFor="stock">Tồn kho:</label>
-                    <InputNumber id="stock" name="stock" onValueChange={handleChange}/>
+                    <label htmlFor="stock">Số lượng:</label>
+                    <InputNumber id="stock" name="stock" onValueChange={handleChange}
+                        className={submitted && !product.stock ? 'p-invalid' : ''}/>
+                    {submitted && !product.stock && 
+                    <small className="p-error">Vui lòng nhập số lượng.</small>}
                 </div>
                 <div className="p-field">
                     <label htmlFor="description">Mô tả sản phẩm:</label>

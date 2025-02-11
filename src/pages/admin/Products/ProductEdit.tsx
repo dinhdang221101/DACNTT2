@@ -63,8 +63,8 @@ const ProductEdit = () => {
                         });
                     }
                     setProduct({ 
-                        productID: 0, productName: '', categoryID: 0, brand: '',
-                        price: 0, stock: 0, description: '', imageURL: ''
+                        productID: 0, productName: '', categoryID: undefined, brand: '',
+                        price: undefined, stock: undefined, description: '', imageURL: ''
                     });
                     setSubmitted(false);
                     setTimeout(() => {
@@ -115,14 +115,18 @@ const ProductEdit = () => {
                 <div className="p-field">
                     <label htmlFor="price">Giá:</label>
                     <InputNumber id="price" name="price" value={product.price} onValueChange={handleChange} 
-                        className={submitted && product.price === 0 ? 'p-invalid' : ''}/>
-                    {submitted && product.price === 0 && <small className="p-error">
+                        className={submitted && !product.price ? 'p-invalid' : ''}/>
+                    {submitted && !product.price && <small className="p-error">
                         Vui lòng nhập giá.
                     </small>}
                 </div>
                 <div className="p-field">
                     <label htmlFor="stock">Tồn kho:</label>
-                    <InputNumber id="stock" name="stock" value={product.stock} onValueChange={handleChange}/>
+                    <InputNumber id="stock" name="stock" value={product.stock} onValueChange={handleChange}
+                        className={submitted && !product.stock ? 'p-invalid' : ''}/>
+                    {submitted && !product.stock && <small className="p-error">
+                        Vui lòng nhập số lượng.
+                    </small>}
                 </div>
                 <div className="p-field">
                     <label htmlFor="description">Mô tả sản phẩm:</label>

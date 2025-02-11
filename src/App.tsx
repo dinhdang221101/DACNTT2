@@ -29,6 +29,12 @@ import CategoryAdd from "./pages/admin/Categories/CategoryAdd";
 import CategoryEdit from "./pages/admin/Categories/CategoryEdit";
 import RequireAuth from "./components/RequireAuth";
 import RequireAuthAdmin from "./components/RequireAuthAdmin";
+import UserList from "./pages/admin/Users/UserList";
+import UserAdd from "./pages/admin/Users/UserAdd";
+import UserEdit from "./pages/admin/Users/UserEdit";
+import PromotionList from "./pages/admin/Promotions/PromotionList";
+import PromotionAdd from "./pages/admin/Promotions/PromotionAdd";
+import PromotionEdit from "./pages/admin/Promotions/PromotionEdit";
 
 axios.defaults.baseURL = "https://localhost:7100/api/";
 
@@ -142,6 +148,16 @@ function App() {
             </Route>
             <Route path="orders/">
               <Route index element={<AdminOrders />} />
+            </Route>
+            <Route path="users/">
+              <Route index element={<UserList />} />
+              <Route path="add" element={<UserAdd />} />
+              <Route path="edit/:id" element={<UserEdit />} />
+            </Route>
+            <Route path="promotions/">
+              <Route index element={<PromotionList />} />
+              <Route path="add" element={<PromotionAdd />} />
+              <Route path="edit/:id" element={<PromotionEdit />} />
             </Route>
           </Route>
         </Routes>

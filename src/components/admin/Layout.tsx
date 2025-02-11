@@ -61,14 +61,36 @@ const Layout = () => {
       ],
     },
     {
-      label: "Khách hàng",
-      icon: "pi pi-fw pi-users",
-      items: [],
+      label: 'Người dùng',
+      icon: 'pi pi-fw pi-users',
+      items: [
+        {
+          label: 'Tất cả người dùng',
+          icon: 'pi pi-fw pi-list',
+          command: () => { navigate("/admin/users"); }
+        },
+        {
+          label: 'Thêm người dùng',
+          icon: 'pi pi-fw pi-plus',
+          command: () => { navigate("/admin/users/add"); }
+        }
+      ]
     },
     {
       label: "Giảm giá",
       icon: "pi pi-fw pi-gift",
-      items: [],
+      items: [
+        {
+          label: 'Tất cả giảm giá',
+          icon: 'pi pi-fw pi-list',
+          command: () => { navigate("/admin/promotions"); }
+        },
+        {
+          label: 'Thêm giảm giá',
+          icon: 'pi pi-fw pi-plus',
+          command: () => { navigate("/admin/promotions/add"); }
+        }
+      ],
     },
     {
       label: "Đăng xuất",
