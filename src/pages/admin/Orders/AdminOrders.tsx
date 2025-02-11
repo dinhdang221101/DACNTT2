@@ -4,70 +4,38 @@ import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
-import "../../../styles/admin/AdminOrders.css"; // Import file CSS
+import axios from "axios";
+import "../../../styles/admin/AdminOrders.css";
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState<any[]>([]);
-  const toast = useRef<any>(null); // Initialize useRef for Toast
+  const toast = useRef<any>(null);
 
   useEffect(() => {
-    const fakeOrders = [
-      {
-        orderID: 21,
-        orderDate: "04/02/2025 13:14:21",
-        totalAmount: 34993000,
-        status: "completed",
-        paymentStatus: "completed",
-        paymentMethod: "VNPAY",
-        paymentDate: "04/02/2025 14:00:00",
-      },
-      {
-        orderID: 22,
-        orderDate: "04/02/2025 15:12:09",
-        totalAmount: 6297000,
-        status: "processing",
-        paymentStatus: "completed",
-        paymentMethod: "Tiền mặt",
-        paymentDate: "04/02/2025 16:00:00",
-      },
-      {
-        orderID: 23,
-        orderDate: "05/02/2025 16:48:07",
-        totalAmount: 2203000,
-        status: "processing",
-        paymentStatus: "pending",
-        paymentMethod: "VNPAY",
-        paymentDate: "",
-      },
-      {
-        orderID: 24,
-        orderDate: "06/02/2025 14:32:37",
-        totalAmount: 19568000,
-        status: "pending",
-        paymentStatus: "pending",
-        paymentMethod: "Tiền mặt",
-        paymentDate: "",
-      },
-      {
-        orderID: 25,
-        orderDate: "07/02/2025 15:00:00",
-        totalAmount: 2303000,
-        status: "pending",
-        paymentStatus: "pending",
-        paymentMethod: "Tiền mặt",
-        paymentDate: "",
-      },
-      {
-        orderID: 26,
-        orderDate: "08/02/2025 16:48:30",
-        totalAmount: 6500000,
-        status: "completed",
-        paymentStatus: "completed",
-        paymentMethod: "VNPAY",
-        paymentDate: "08/02/2025 17:00:00",
-      },
-    ];
-    setOrders(fakeOrders);
+    axios
+      .get("/admin/orders")
+      .then((response) => {
+        const data = response.data;
+        if (data.status === "00") {
+          setOrders(
+            data.data.map((order) => ({
+              orderID: order.orderID,
+              orderDate: new Date(order.orderDate).toLocaleString(),
+              totalAmount: order.totalAmount,
+              orderStatus: order.orderStatus,
+              paymentStatus: order.paymentStatus,
+              paymentMethod: order.paymentMethodID === 2 ? "VNPAY" : "Tiền mặt",
+              paymentDate:
+                order.paymentDate !== "0001-01-01T00:00:00"
+                  ? new Date(order.paymentDate).toLocaleString()
+                  : "",
+            }))
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Có lỗi xảy ra khi lấy dữ liệu:", error);
+      });
   }, []);
 
   const orderStatusOptions = [
@@ -110,11 +78,33 @@ const AdminOrders = () => {
     }
   };
 
-  const showToast = () => {
+  const handleConfirm = (rowData: any) => {
+    const payload = {
+      orderID: rowData.orderID,
+      orderStatus: rowData.orderStatus,
+      paymentStatus: rowData.paymentStatus,
+    };
+
+    axios
+      .post("/admin/orders", payload)
+      .then((response) => {
+        if (response.data.status === "00") {
+          showToast("Đã xác nhận chỉnh sửa!");
+        } else {
+          showToast("Có lỗi xảy ra khi xác nhận!");
+        }
+      })
+      .catch((error) => {
+        console.error("Có lỗi xảy ra khi gửi yêu cầu xác nhận:", error);
+        showToast("Có lỗi xảy ra khi xác nhận!");
+      });
+  };
+
+  const showToast = (message: string) => {
     toast.current.show({
       severity: "success",
       summary: "Thành công",
-      detail: "Đã xác nhận chỉnh sửa!",
+      detail: message,
       closable: false,
       life: 2000,
     });
@@ -122,7 +112,7 @@ const AdminOrders = () => {
 
   return (
     <div className="main-content">
-      <Toast ref={toast} /> {/* Toast component */}
+      <Toast ref={toast} />
       <div className="main-header">
         <p>Quản lý đơn hàng</p>
       </div>
@@ -161,9 +151,11 @@ const AdminOrders = () => {
               headerClassName="status-header"
               body={(rowData) => (
                 <Dropdown
-                  value={rowData.status}
+                  value={rowData.orderStatus}
                   options={orderStatusOptions}
-                  onChange={(e) => onStatusChange(e, rowData.orderID, "status")}
+                  onChange={(e) =>
+                    onStatusChange(e, rowData.orderID, "orderStatus")
+                  }
                   placeholder="Chọn trạng thái"
                   itemTemplate={(option) => (
                     <div
@@ -224,15 +216,13 @@ const AdminOrders = () => {
                       className="pi pi-credit-card"
                       style={{ marginRight: "8px" }}
                     >
-                      {" "}
-                      VN Pay
+                      &nbsp;VN Pay
                     </i>
                   </label>
                 ) : (
                   <label htmlFor="cash">
                     <i className="pi pi-wallet" style={{ marginRight: "8px" }}>
-                      {" "}
-                      Tiền mặt
+                      &nbsp;Tiền mặt
                     </i>
                   </label>
                 )
@@ -249,7 +239,7 @@ const AdminOrders = () => {
               body={(rowData) => (
                 <Button
                   label="Xác nhận"
-                  onClick={showToast}
+                  onClick={() => handleConfirm(rowData)}
                   className="confirm-button"
                 />
               )}
