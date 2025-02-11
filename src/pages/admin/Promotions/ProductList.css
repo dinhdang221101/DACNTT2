@@ -1,0 +1,5 @@
+.product-item {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
