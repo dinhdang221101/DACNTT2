@@ -36,8 +36,8 @@ import PromotionList from "./pages/admin/Promotions/PromotionList";
 import PromotionAdd from "./pages/admin/Promotions/PromotionAdd";
 import PromotionEdit from "./pages/admin/Promotions/PromotionEdit";
 
-// axios.defaults.baseURL = "https://dacntt2be.onrender.com/api/";
-axios.defaults.baseURL = "https://localhost:7100/api/";
+axios.defaults.baseURL = "https://dacntt2be.onrender.com/api/";
+// axios.defaults.baseURL = "https://localhost:7100/api/";
 
 function App() {
   return (
