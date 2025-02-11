@@ -1,124 +1,136 @@
 .card {
-    width: 100%;
+  width: 100%;
 }
 
 .product-id-header {
-    width: 2%;
+  width: 2%;
 }
 
 .product-name-header {
-    width: 5%;
+  width: 5%;
 }
 
 .brand-header {
-    width: 2%;
+  width: 2%;
 }
 
 .price-header {
-    width: 2%;
+  width: 2%;
 }
 
 .stock-header {
-    width: 2%;
+  width: 2%;
 }
 
 .description-header {
-    width: 63%;
+  width: 63%;
 }
 
 .imageURL-header {
-    width: 20%;
+  width: 20%;
 }
 
 .action-header {
-    width: 2%;
+  width: 2%;
 }
 
 .category-id-header {
-    width: 8%;
+  width: 8%;
 }
 
 .category-name-header {
-    width: 8%;
+  width: 8%;
 }
 
 .action-btns {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 
-    Button {
-        cursor: pointer;
-    }
+  Button {
+    cursor: pointer;
+  }
 
-    Button:active {
-        outline: none;
-    }
+  Button:active {
+    outline: none;
+  }
 
-    .update-btn {
-        background-color: white;
-        color: #ff9800;
-        border-color: #ff9800;
-        border: 1px solid #ff9800;
-    }
+  .add-btn {
+    background-color: white;
+    color: #4caf50;
+    border-color: #4caf50;
+    border: 1px solid #4caf50;
+  }
 
-    .update-btn:hover {
-        background-color: #ff9800; 
-        color: white;
-        transition: 0.2s;
-    }
+  .add-btn:hover {
+    background-color: #4caf50;
+    color: white;
+    transition: 0.2s;
+  }
 
-    .delete-btn {
-        background-color: white;
-        color: #ff2222;
-        border: 1px solid #ff2222;
-    }
+  .update-btn {
+    background-color: white;
+    color: #ff9800;
+    border-color: #ff9800;
+    border: 1px solid #ff9800;
+  }
 
-    .delete-btn:hover {
-        background-color: #ff2222;
-        color: white;
-        transition: 0.2s;
-    }
+  .update-btn:hover {
+    background-color: #ff9800;
+    color: white;
+    transition: 0.2s;
+  }
+
+  .delete-btn {
+    background-color: white;
+    color: #ff2222;
+    border: 1px solid #ff2222;
+  }
+
+  .delete-btn:hover {
+    background-color: #ff2222;
+    color: white;
+    transition: 0.2s;
+  }
 }
 
 .main-header {
-    display: flex;
-    margin-bottom: 20px;
+  display: flex;
+  margin-bottom: 20px;
 
-    p {
-        color: #ff9800;
-        font-size: 18px;
-        cursor: pointer;
-        font-weight: 600;
-    }
+  p {
+    color: #ff9800;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
+  }
 
-    .add-btn {
-        background-color: white;
-        color: #ff9800;
-        border: 1px solid #ff9800;
-        font-size: 16px;
-        width: 102px;
-        height: 40px;
-        margin-left: auto;
-        margin-top: 15px;
-    }
-    .add-btn:hover {
-        background-color: #ff9800;
-        color: white;
-    }
+  .add-btn {
+    background-color: white;
+    color: #ff9800;
+    border: 1px solid #ff9800;
+    font-size: 16px;
+    width: 102px;
+    height: 40px;
+    margin-left: auto;
+    margin-top: 15px;
+  }
+  .add-btn:hover {
+    background-color: #ff9800;
+    color: white;
+  }
 }
 
 .reject {
-    padding: 10px 16px;
+  padding: 10px 16px;
 }
 
 .accept {
-    background-color: rgb(232, 83, 81);
-    color: white;
-    padding: 10px 16px;
+  background-color: rgb(232, 83, 81);
+  color: white;
+  padding: 10px 16px;
 }
 
 .p-dialog-header-icons {
-    visibility: hidden;
+  visibility: hidden;
 }
-
